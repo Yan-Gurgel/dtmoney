@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# DtMoney
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicação do capítulo 2 do Ignite. Dtmoney é uma aplicação front-end web completa utilizando conceitos e ferramentas importantes do ecossistema React como Styled Components, MirageJS, Context API, hooks, Axios e muito mais.
 
 ## Available Scripts
 
