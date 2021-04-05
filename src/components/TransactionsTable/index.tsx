@@ -1,7 +1,14 @@
+import { useEffect } from "react";
 import { Container } from "./styles";
 
-export function TransactionsTable(){
-    return(
+export function TransactionsTable() {
+    useEffect(() => {
+        fetch('http://localhost:3000/api/transactions') //endereço da aplicação
+            .then(response => response.json()) //resposta da requisição convertida para json
+            .then(data => console.log(data)) //congole log do json
+    }, []);
+
+    return (
         <Container>
             <table>
                 <thead>
@@ -26,7 +33,7 @@ export function TransactionsTable(){
                         <td>Casa</td>
                         <td>17/02/2021</td>
                     </tr>
-                    
+
                 </tbody>
             </table>
         </Container>
