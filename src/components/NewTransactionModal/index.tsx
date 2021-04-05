@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
@@ -11,7 +11,23 @@ interface NewTransacationModalProps {
 }
 
 export function NewTransactionModal({ isOpen, onRequestClose }: NewTransacationModalProps) {
+  const [title, setTitle] = useState('');
+  const [value, setValue] = useState(0);
+  const [category, setCategory] = useState('');
   const [type, setType] = useState('deposit');
+
+  function handleCreationNewTransaction(event: FormEvent) {
+    event.preventDefault();
+    console.log({
+      title,
+      value,
+      type,
+      category,  
+    });
+
+    
+
+  }
 
   return (
     <Modal
@@ -28,14 +44,19 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransacationM
         <img src={closeImg} alt="Fechar modal" />
       </button>
 
-      <Container>
+      <Container onSubmit={handleCreationNewTransaction}>
         <h2>Cadastrar transação</h2>
         <input placeholder="Título"
+          value={title}
+          onChange={event => setTitle(event.target.value)} //(event.target.value) = Valor digitado
         />
 
 
         <input type="number"
-          placeholder="Valor " />
+          placeholder="Valor "
+          value={value}
+          onChange={event => setValue(Number(event.target.value))}
+        />
 
 
         <TransactionTypeContainer>
@@ -52,7 +73,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransacationM
           <RadioBox
             type="button"
             onClick={() => { setType('withdraw'); }}
-            isActive={type === 'withdraw'} 
+            isActive={type === 'withdraw'}
             activeColor="red"
           >
             <img src={outcomeImg} alt="Saida" />
@@ -63,6 +84,8 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransacationM
 
 
         <input placeholder="Categoria"
+        value={category}
+        onChange={event => setCategory(event.target.value)}
         />
 
 
