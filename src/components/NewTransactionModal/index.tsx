@@ -21,15 +21,22 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransacationM
   const [category, setCategory] = useState('');
   const [type, setType] = useState('deposit');
 
-  function handleCreationNewTransaction(event: FormEvent) {//cadastro de uma nova transação
+  async function handleCreationNewTransaction(event: FormEvent) {//cadastro de uma nova transação
     event.preventDefault();
     
-    createTransaction ({
+    await createTransaction ({
       title,
       amount,
       category,
       type
     });
+
+    setTitle('');
+    setAmount(0);
+    setCategory('');
+    setType('deposit');
+    onRequestClose();
+
   }
   return (
     <Modal
