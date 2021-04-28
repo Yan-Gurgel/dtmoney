@@ -88,8 +88,8 @@ export const RadioBox = styled.button<RadioBoxProps>`
         }
 
         img {
-            width: 20px;
-            height: 20px;
+            width: 280px;
+            height: 280px;
         }
 
         span {
